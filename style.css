@@ -1,0 +1,226 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Train+One&display=swap');
+/* UTF-8一定要在行數1 */
+
+
+
+:root {
+    --primary--: #F1DAAE;
+    --primary--2: rgb(145, 85, 61);
+
+--secondary--:#482E1D;
+
+    --tertiary: #C20F24;
+
+    --font--1: #4A2711;
+}
+
+
+/* 重置所有標籤的樣式 */
+* {
+    /* '*'代表全部所有東西 重製全部東西 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*  rwd一定要寫 不累加padding border*/
+    /* 不累加內容的padding */
+}
+
+/* 重置字體 */
+/* 字體會先抓前面的 */
+/* 英文字體不會設定中文字體 會直接往後找 font-family= '英文字體' '中文字體' */
+body {
+
+    font-family: sans-serif;
+    font-family:
+        /*西文*/
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
+        /*中文*/
+        "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    background-color: var(--primary--);
+}
+
+/* 重置標題 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+/* 重置列表 */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 重置圖片 */
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 重置連接 */
+a {
+    display: block;
+    text-decoration: none;
+    /* 將預設inline改為block */
+    /* 底線會先拿掉 */
+    color: #000;
+    /* 設定顏色 */
+}
+
+/* 共用區 */
+h2{
+    font-size: 52px;
+    color: var(--font--1);
+    font-weight: 800;
+}
+
+p{
+    font-size: 20px;
+    color: var(--font--1);
+    font-weight: 600;
+}
+
+
+/* 頁首區 */
+
+header {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 15px 2%;
+}
+
+figure {
+    width: 100%;
+}
+
+#main-logo {
+    width: 150px;
+}
+
+.nav-menu {
+    width: 60vh;
+    display: flex;
+    font-weight: 600;
+    color: var(--font--1);
+    justify-content: space-evenly;
+}
+
+.nav-menu img {
+    width: 24px;
+    height: 24px;
+}
+
+/* banner */
+#main{
+width: 100%;
+display: flex;
+justify-content: space-around;
+padding: 5%;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+/* 輪播區 */
+.carousel {
+    position: relative;
+    max-width: 605px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    height: 15%;
+    transform: translateY(-50%);
+    background-color: var(--primary--2);
+    border-radius: 10px;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+button:hover {
+    background-color: rgb(145, 85, 61,.6);
+}
+
+
+/* 跑馬燈區 */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;  /* 使內容在父容器中可控 */
+}
+
+.marquee {
+    display: flex;
+    animation: marqueeScroll 20s linear infinite;  /* 增加無限滾動動畫 */
+}
+
+.marquee img {
+    width: 200px;
+    height: 150px;
+    margin: 0 10px;
+    object-fit: cover;
+}
+
+
+/* 關於我們頁 */
+#about{
+    width: 100%;
+    height: 50vh;
+    padding: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* 跑馬燈動畫 */
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(100%);  /* 從右側進入 */
+    }
+    100% {
+        transform: translateX(-100%); /* 向左移動，移出畫面 */
+    }
+}
+
