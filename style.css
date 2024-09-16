@@ -8,7 +8,7 @@
     --primary--: #F1DAAE;
     --primary--2: rgb(145, 85, 61);
 
---secondary--:#482E1D;
+    --secondary--: #482E1D;
 
     --tertiary: #C20F24;
 
@@ -77,17 +77,44 @@ a {
 }
 
 /* 共用區 */
-h2{
+h2 {
     font-size: 52px;
     color: var(--font--1);
     font-weight: 800;
 }
 
-p{
+p {
     font-size: 20px;
     color: var(--font--1);
     font-weight: 600;
 }
+
+.box__list {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    margin-bottom: 50px;
+
+}
+
+
+.box__list .item {
+    flex: 1;
+    margin: 0 15px;
+    box-shadow: 3px 3px 10px var(--deep);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.box__list figure {
+    height: 50vh;
+}
+
+.box__list img {
+    object-fit: cover;
+    height: 100%;
+}
+
 
 
 /* 頁首區 */
@@ -127,18 +154,19 @@ figure {
 }
 
 /* banner */
-#main{
-width: 100%;
-display: flex;
-justify-content: space-around;
-padding: 5%;
+#main {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 5%;
 }
 
-.text{
+.text {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
+
 /* 輪播區 */
 .carousel {
     position: relative;
@@ -180,7 +208,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(145, 85, 61,.6);
+    background-color: rgb(145, 85, 61, .6);
 }
 
 
@@ -188,12 +216,14 @@ button:hover {
 .marquee-container {
     width: 100%;
     overflow: hidden;
-    position: relative;  /* 使內容在父容器中可控 */
+    position: relative;
+    /* 使內容在父容器中可控 */
 }
 
 .marquee {
     display: flex;
-    animation: marqueeScroll 20s linear infinite;  /* 增加無限滾動動畫 */
+    animation: marqueeScroll 20s linear infinite;
+    /* 增加無限滾動動畫 */
 }
 
 .marquee img {
@@ -205,22 +235,104 @@ button:hover {
 
 
 /* 關於我們頁 */
-#about{
+#about {
     width: 100%;
-    height: 50vh;
+    height: 60vh;
     padding: 5%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-bottom: 10%;
 }
 
 /* 跑馬燈動畫 */
 @keyframes marqueeScroll {
     0% {
-        transform: translateX(100%);  /* 從右側進入 */
+        transform: translateX(100%);
+        /* 從右側進入 */
     }
+
     100% {
-        transform: translateX(-100%); /* 向左移動，移出畫面 */
+        transform: translateX(-100%);
+        /* 向左移動，移出畫面 */
     }
 }
 
+/* 服務頁 */
+#title {
+    text-align: center;
+    margin-bottom: 5%;
+    line-height: 3rem;
+}
+
+#service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+#service .item {
+    height: 60vh;
+    /* 平板以上有交換主軸方向， flex 1變成高度，flex權重大於寬高 */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+}
+
+#service a {
+    width: 100%;
+    /* 父層加了display:flex，所以要給寬度 */
+    color: var(--light);
+    background-color: var(--alpha-b-40);
+
+
+}
+
+.svc-1 {
+    background-image: url(./images/box-item1.svg);
+}
+
+.svc-2 {
+    background-image: url(./images/box-item2.svg);
+}
+
+.svc-3 {
+    background-image: url(./images/box-item3.svg);
+}
+
+.svc-4 {
+    background-image: url(./images/box-item4.svg);
+}
+
+/* 聯絡我們 */
+#contact{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20%;
+}
+.contact{
+    width: 100%;
+}
+#contact figure{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+#contact img{
+    width: 90px;
+}
+
+/* 頁尾 */
+footer{
+    width: 100%;
+    height: 100px;
+    background-color: var(--primary--2);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
