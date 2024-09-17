@@ -6,7 +6,7 @@
 
 :root {
     --primary--: #F1DAAE;
-    --primary--2: rgb(145, 85, 61);
+    --primary--2: hwb(17 24% 43%);
 
     --secondary--: #482E1D;
 
@@ -146,6 +146,10 @@ figure {
     font-weight: 600;
     color: var(--font--1);
     justify-content: space-evenly;
+}
+
+.nav-menu li{
+    width: 100%;
 }
 
 .nav-menu img {
@@ -338,6 +342,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 /* service頁 */
@@ -360,3 +365,6 @@ video {
     justify-content: center;
     flex-direction: column;
 }
+
+
+

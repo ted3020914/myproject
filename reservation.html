@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預約服務 - 美佳乾洗中心</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- header 部分 -->
+    <header class="header">
+        <div class="container">
+            <figure><a href="./index.html"><img src="./images/logo.svg" alt="" id="main-logo"></a></figure>
+            <nav>
+                <ul class="nav-menu">
+                    <img src="./images/icon-1.svg" alt="">
+                    <li><a href="./service.html">服務介紹</a></li>
+                    <img src="./images/icon-2.svg" alt="">
+                    <li><a href="#">聯絡我們</a></li>
+                    <img src="./images/icon-3.svg" alt="">
+                    <li><a href="#">保養Q&A</a></li>
+                    <img src="./images/icon-4.svg" alt="">
+                    <li><a href="./reservation.html">預約服務</a></li>
+                    <img src="./images/icon-5.svg" alt="">
+                    <li><a href="#">會員專區</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <h2 style="margin: 2%;">請選擇欲送洗物品</h2>
+
+    <!-- 預約表單 -->
+    <div id="root"></div>
+
+    <!-- React & Babel libraries -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- React component -->
+    <script type="text/babel">
+        function LaundryItem({ name, image }) {
+            const [drycleanCount, setDrycleanCount] = React.useState(0);
+            const [waterwashCount, setWaterwashCount] = React.useState(0);
+            const [note, setNote] = React.useState("");
+
+            return (
+                <div style={styles.container}>
+                    {/* 商品圖片 */}
+                    <img src={image} alt={name} style={styles.image} />
+
+                    {/* 商品名稱 */}
+                    <h3 style={styles.productName}>{name}</h3>
+
+                    {/* 乾洗選項 */}
+                    <div style={styles.option}>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={drycleanCount > 0}
+                                onChange={(e) => setDrycleanCount(e.target.checked ? 1 : 0)}
+                            />
+                            乾洗
+                        </label>
+                        <select
+                            value={drycleanCount}
+                            onChange={(e) => setDrycleanCount(Number(e.target.value))}
+                            style={styles.select}
+                            disabled={drycleanCount === 0}
+                        >
+                            <option value={0}>0 件</option>
+                            <option value={1}>1 件</option>
+                            <option value={2}>2 件</option>
+                            <option value={3}>3 件</option>
+                        </select>
+                    </div>
+
+                    {/* 水洗選項 */}
+                    <div style={styles.option}>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={waterwashCount > 0}
+                                onChange={(e) => setWaterwashCount(e.target.checked ? 1 : 0)}
+                            />
+                            水洗
+                        </label>
+                        <select
+                            value={waterwashCount}
+                            onChange={(e) => setWaterwashCount(Number(e.target.value))}
+                            style={styles.select}
+                            disabled={waterwashCount === 0}
+                        >
+                            <option value={0}>0 件</option>
+                            <option value={1}>1 件</option>
+                            <option value={2}>2 件</option>
+                            <option value={3}>3 件</option>
+                        </select>
+                    </div>
+
+                    {/* 備註輸入框 */}
+                    <div style={styles.option}>
+                        <label>備註</label>
+                        <input
+                            type="text"
+                            value={note}
+                            onChange={(e) => setNote(e.target.value)}
+                            placeholder="輸入您的備註"
+                            style={styles.input}
+                        />
+                    </div>
+                </div>
+            );
+        }
+
+        function LaundryItemsContainer() {
+            const [isHovered, setIsHovered] = React.useState(false); // 新增狀態跟蹤
+
+            // 新增處理送出按鈕的函數
+            function handleSubmit() {
+                alert('您的預約已送出！');
+            }
+
+            return (
+                <div style={styles.pageWrapper}>
+                    <div style={styles.containerWrapper}>
+                        <LaundryItem name="襯衫" image="./images/reservation-item1.svg" />
+                        <LaundryItem name="西裝" image="./images/reservation-item2.svg" />
+                        <LaundryItem name="洋裝" image="./images/reservation-item3.svg" />
+                        <LaundryItem name="毛衣" image="./images/reservation-item4.svg" />
+                        <LaundryItem name="毛毯" image="./images/reservation-item5.svg" />
+                        <LaundryItem name="特殊衣物" image="./images/reservation-item6.svg" />
+                    </div>
+                    {/* 送出按鈕 */}
+                        <button
+                            style={isHovered ? { ...styles.submitButton, ...styles.submitButtonHover } : styles.submitButton}
+                            onMouseEnter={() => setIsHovered(true)}  // 當鼠標進入按鈕時觸發
+                            onMouseLeave={() => setIsHovered(false)} // 當鼠標離開按鈕時觸發
+                            onClick={handleSubmit}
+                        >
+                            送出預約
+                        </button>
+
+                </div>
+            );
+        }
+
+
+        const styles = {
+            pageWrapper: {
+                textAlign: "center",
+                position: "relative",
+            },
+            containerWrapper: {
+                display: "flex",
+                justifyContent: "space-between", /* 選項之間的空隙 */
+                flexWrap: "wrap",
+                maxWidth: "1200px", /* 限制整體容器寬度 */
+                margin: "0 auto", /* 置中 */
+                position: "relative", /* 相對定位 */
+            },
+            container: {
+                border: "2px solid #8F6B6F",
+                padding: "20px",
+                width: "30%", /* 三個一排 */
+                marginBottom: "20px",
+                boxSizing: "border-box", /* 確保 padding 和寬度一起計算 */
+            },
+            image: {
+                width: "100%",
+                height: "auto",
+            },
+            productName: {
+                color: "#5C3D2E",
+                fontSize: "1.5rem",
+                marginBottom: "2%",
+                fontWeight: "600",
+            },
+            option: {
+                marginBottom: "10px",
+                borderRadius: "99px",
+                color: "#4A2711",
+            },
+            select: {
+                marginLeft: "10px",
+                padding: "5px",
+                border: "1px solid #5C3D2E",
+                borderRadius: "20px",
+                color: "#4A2711",
+                outline: "none",
+            },
+            input: {
+                marginTop: "10px",
+                padding: "10px 20px",
+                width: "100%",
+                borderRadius: "20px",
+                color: "#4A2711",
+                backgroundColor: "#F1DAAE",
+                border: "1px solid #5C3D2E",
+                outline: "none",
+
+            },
+            submitButton: {
+                width: "150px",  // 設置固定寬度以便定位
+                height: "50px",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px 20px",
+                backgroundColor: "#8F6B6F",
+                color: "#FFF",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                position: "absolute",  // 修正拼寫
+                right: "5%",  // 定位到父容器的右側
+                bottom: "5%",  // 固定在距父容器底部 25px
+            },
+            submitButtonHover: {
+                backgroundColor: "#5C3D2E",  // 當鼠標懸停時的背景顏色
+            },
+        };
+
+
+        ReactDOM.render(<LaundryItemsContainer />, document.getElementById('root'));
+    </script>
+
+    <!-- footer 部分 -->
+    <footer>
+        <p style="color: white; font-weight: 300;">美佳乾洗中心 &copy; 2024. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
