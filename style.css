@@ -306,28 +306,31 @@ button:hover {
 }
 
 /* 聯絡我們 */
-#contact{
+#contact {
     width: 100%;
     display: flex;
     text-align: center;
     align-items: center;
     margin-bottom: 20%;
 }
-.contact{
+
+.contact {
     width: 100%;
 }
-#contact figure{
+
+#contact figure {
     width: 100%;
     display: flex;
     justify-content: center;
 
 }
-#contact img{
+
+#contact img {
     width: 90px;
 }
 
 /* 頁尾 */
-footer{
+footer {
     width: 100%;
     height: 100px;
     background-color: var(--primary--2);
@@ -335,4 +338,25 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* service頁 */
+video {
+    width: 50%;
+    border-radius: 20px;
+    padding: .5rem;
+    margin: 0 2%;
+}
+
+.service-video {
+    display: flex;
+    margin-bottom: 5%;
+}
+
+.service-text {
+    width: 100%;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
